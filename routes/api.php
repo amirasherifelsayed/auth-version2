@@ -16,6 +16,9 @@ Route::post('/register', 'UserController@register');
 Route::post('/login', 'UserController@login');
 Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('/courses', 'CoursesController@index');
+    Route::get('/courses/list', 'CoursesController@ShowCourses');
+ //   Route::get('/courses/{id}', 'CoursesController@CourseItem');
+
 });
 Route::middleware('jwt.auth')->get('users', function(Request $request) {
     return auth()->user();
